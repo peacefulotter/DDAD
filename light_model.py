@@ -47,6 +47,9 @@ class DDAD(AnomalyModule):
         self.log("train_loss", loss.item(), on_epoch=True, prog_bar=True, logger=True)
         return {"loss": loss}
 
+    # TOOD: move this to some other function than __call__
+    # This trains the domain adapter first (and reconstruction?)
+    # the rest is inference
     def __call__(self) -> Any:
         domain_adaptater = DomainAdapter(backbone)
 
